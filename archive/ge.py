@@ -1,4 +1,3 @@
-
 # Get a Genius.com API key (Free!): Follow instructions here
 # I use Python3
 # GENIUS_API_TOKEN='YOUR-TOKEN-HERE'
@@ -118,13 +117,15 @@ import re
 
 GENIUS_API_TOKEN = "jnuO5kYQiInakBTrNekqUfeaFSCzQs1jWcYWS-2aW74QOJoLZdpVr1CIe0sT8vZ2"
 
+
 def request_artist_info(artist_name, page):
-    base_url = 'https://api.genius.com'
-    headers = {'Authorization': 'Bearer ' + GENIUS_API_TOKEN}
-    search_url = base_url + '/search?per_page=10&page=' + str(page)
-    data = {'q': artist_name}
+    base_url = "https://api.genius.com"
+    headers = {"Authorization": "Bearer " + GENIUS_API_TOKEN}
+    search_url = base_url + "/search?per_page=10&page=" + str(page)
+    data = {"q": artist_name}
     response = requests.get(search_url, data=data, headers=headers)
     return response
+
 
 def request_song_url(artist_name, song_cap):
     page = 1
@@ -135,46 +136,47 @@ def request_song_url(artist_name, song_cap):
         json = response.json()
         # Collect up to song_cap song objects from artist
         song_info = []
-        for hit in json['response']['hits']:
-            if artist_name.lower() in hit['result']['primary_artist']['name'].lower():
+        for hit in json["response"]["hits"]:
+            if artist_name.lower() in hit["result"]["primary_artist"]["name"].lower():
                 song_info.append(hit)
 
         # Collect song URL's from song objects
         for song in song_info:
-            if (len(songs) < song_cap):
-                url = song['result']['url']
+            if len(songs) < song_cap:
+                url = song["result"]["url"]
                 songs.append(url)
 
-        if (len(songs) == song_cap):
+        if len(songs) == song_cap:
             break
         else:
             page += 1
 
-    print('Found {} songs by {}'.format(len(songs), artist_name))
+    print("Found {} songs by {}".format(len(songs), artist_name))
     return songs
+
 
 def scrape_song_lyrics(url):
     page = requests.get(url)
-    html = BeautifulSoup(page.text, 'html.parser')
-    lyrics = html.find('div', class_='lyrics').get_text()
-    #remove identifiers like chorus, verse, etc
-    lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
-    #remove empty lines
+    html = BeautifulSoup(page.text, "html.parser")
+    lyrics = html.find("div", class_="lyrics").get_text()
+    # remove identifiers like chorus, verse, etc
+    lyrics = re.sub(r"[\(\[].*?[\)\]]", "", lyrics)
+    # remove empty lines
     lyrics = os.linesep.join([s for s in lyrics.splitlines() if s])
     return lyrics
 
 
 def write_lyrics_to_file(artist_name, song_count):
-    f = open('lyrics/' + artist_name.lower() + '.txt', 'wb')
+    f = open("lyrics/" + artist_name.lower() + ".txt", "wb")
     urls = request_song_url(artist_name, song_count)
     for url in urls:
         lyrics = scrape_song_lyrics(url)
         f.write(lyrics.encode("utf8"))
     f.close()
-    num_lines = sum(1 for line in open('lyrics/' + artist_name.lower() + '.txt', 'rb'))
-    print('Wrote {} lines to file from {} songs'.format(num_lines, song_count))
+    num_lines = sum(1 for line in open("lyrics/" + artist_name.lower() + ".txt", "rb"))
+    print("Wrote {} lines to file from {} songs".format(num_lines, song_count))
 
 
 # DEMO
-write_lyrics_to_file('Kendrick Lamar', 100)
+write_lyrics_to_file("Kendrick Lamar", 100)
 # This would write lyrics from one hundred Kendrick Lamar songs to a file ./lyrics/kendrick lamar.txt

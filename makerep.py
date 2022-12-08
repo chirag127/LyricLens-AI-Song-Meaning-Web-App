@@ -1,16 +1,16 @@
-"""
-This script is used to fetch lyrics from azlyrics.com"""
+from cgpt import get_chat_response
+from prompt import return_prompt
+from azlyrics import get_lyrics
 
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-from time import sleep
 import os
+from time import sleep
 
 
-def get_lyrics(url="https://www.azlyrics.com/lyrics/charlieputh/themoment.html"):
+def get_lyrics_explaination_and_lyrics(url):
     delay = 10
-    seperator = "==="
+
     try:
+
         song_name = url.split("/")[-1].split(".")[0]
 
         file_name = song_name + ".txt"
@@ -19,52 +19,53 @@ def get_lyrics(url="https://www.azlyrics.com/lyrics/charlieputh/themoment.html")
 
         full_path = os.path.join(artist_name, file_name)
 
-        full_path = os.path.join("lyrics", full_path)
+        full_path = os.path.join("response", full_path)
 
         file_name = full_path
 
         # create directory if not exists
-        if not os.path.exists("lyrics"):
-            os.mkdir("lyrics")
+        if not os.path.exists("response"):
+            os.mkdir("response")
 
-        # create artist directory in lyrics if not exists in lyrics folder
-        if not os.path.exists("lyrics/" + artist_name):
-            os.mkdir("lyrics/" + artist_name)
+        # create artist directory in response if not exists in response folder
+        if not os.path.exists("response/" + artist_name):
+            os.mkdir("response/" + artist_name)
 
         if os.path.exists(file_name):
-            print("Lyrics already exists for : " + song_name)
-
-            actual_song_name_and_lyrics = open(file_name, "r", encoding="utf-8").read()
+            print("Response already exists for : " + song_name)
 
             delay = 0
-            actual_song_name = actual_song_name_and_lyrics.split(seperator)[0]
 
-            lyrics = actual_song_name_and_lyrics.split(seperator)[1]
+            return open(file_name, "r", encoding="utf-8").read(),get_lyrics(url)
+
+        lyrics,song_name = get_lyrics(url)
+        if artist_name == "charlieputh":
 
 
-            return lyrics, actual_song_name
+            artist_name = "Charlie Puth"
 
-        html_page = urlopen(url)
-        soup = BeautifulSoup(html_page, "html.parser")
+        else:
+            return "Artist not found"
 
-        html_pointer = soup.find("div", attrs={"class": "ringtone"})
-        actual_song_name = html_pointer.find_next("b").contents[0].strip()
-        lyrics = html_pointer.find_next("div").text.strip()
+        prompt = return_prompt(lyrics, artist_name, song_name)
+
+        response = get_chat_response(prompt)
 
         with open(file_name, "w", encoding="utf-8") as file:
 
-            file.write(actual_song_name + seperator + lyrics)
+            file.write(response)
 
-        print("Lyrics successfully written to file for : " + song_name)
+        print("Response successfully written to file for : " + song_name)
 
-        return lyrics, actual_song_name
+        return response,lyrics
 
-    except Exception as e:
-        print("Error occured while fetching lyrics for : " + song_name)
-        print(e)
-        print("Lyrics not found for : " + song_name)
+    except Exception as error:
+        print("Error occured while fetching response for : " + song_name)
+        print(error)
+        print("Response not found for : " + song_name)
 
     finally:
+
         sleep(delay)
 
 
@@ -165,22 +166,8 @@ https://www.azlyrics.com/lyrics/charlieputh/twomonths.html
 https://www.azlyrics.com/lyrics/charlieputh/whenshekissedme.html
 https://www.azlyrics.com/lyrics/charlieputh/yournametheukulelesong.html
 """
-#     urls = """https://www.azlyrics.com/lyrics/charlieputh/themoment.html
-# https://www.azlyrics.com/lyrics/charlieputh/isuckatwritinglyrics.html
-# https://www.azlyrics.com/lyrics/charlieputh/idontwannahurtyoubabyacoustic.html
-# https://www.azlyrics.com/lyrics/charlieputh/nexttoyou.html
-# https://www.azlyrics.com/lyrics/charlieputh/timepassesby.html
-# https://www.azlyrics.com/lyrics/charlieputh/idontwannahurtyoubaby.html
-# https://www.azlyrics.com/lyrics/charlieputh/iwonttellasoul.html"""
 
     urls = [url.strip() for url in urls.split("\n")]
 
     for url in urls:
-        print(url)
-        try:
-            lyrics = get_lyrics(url)
-            print(lyrics)
-            print()
-        except Exception as e:
-            print(e)
-            print()
+        get_lyrics_explaination_and_lyrics(url)
