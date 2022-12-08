@@ -35,8 +35,9 @@ def get_lyrics_explaination_and_lyrics(url):
             print("Response already exists for : " + song_name)
 
             delay = 0
+            lyrics,song_name = get_lyrics(url)
 
-            return open(file_name, "r", encoding="utf-8").read(),get_lyrics(url)
+            return open(file_name, "r", encoding="utf-8").read(),lyrics,song_name
 
         lyrics,song_name = get_lyrics(url)
         if artist_name == "charlieputh":
@@ -57,7 +58,7 @@ def get_lyrics_explaination_and_lyrics(url):
 
         print("Response successfully written to file for : " + song_name)
 
-        return response,lyrics
+        return response,lyrics,song_name
 
     except Exception as error:
         print("Error occured while fetching response for : " + song_name)
