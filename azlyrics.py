@@ -8,7 +8,7 @@ import os
 
 
 def get_lyrics(url="https://www.azlyrics.com/lyrics/charlieputh/themoment.html"):
-    delay = 10
+    delay = 2
     seperator = "==="
     try:
         song_name = url.split("/")[-1].split(".")[0]
