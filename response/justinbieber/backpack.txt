@@ -1,0 +1,1 @@
+[Status Code] 429 | [Response Text] {"detail":"Too many requests, please slow down"}

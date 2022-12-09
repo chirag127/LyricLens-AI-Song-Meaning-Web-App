@@ -139,6 +139,9 @@ def get_lyrics_explaination_and_lyrics(url):
 
         response = get_chat_response(prompt)
 
+        if "large language model" in response:
+            raise
+
         with open(file_name, "w", encoding="utf-8") as file:
 
             file.write(response)
