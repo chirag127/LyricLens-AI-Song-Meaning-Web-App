@@ -12,25 +12,23 @@ Lyrics for {song_name} by {artist} are as follows:
 
 {lyrics}
 
-Now, please you may try to do the following task for me:
+Now, please you may try to do the following tasks for me pointwise and in order and don't disappoint me:
 
     1. You may try to give a brief summary of the song {song_name} by {artist}.
     2. You may try to give the explaination and meaning for the first verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the first verse of the song is about the following things: ((first verse explaination)).
     3. You may try to give the explaination and meaning for the second verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the second verse of the song is about the following things: ((second verse explaination)).
     4. You may try to give the explaination and meaning for the third verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the third verse of the song is about the following things: ((third verse explaination)).
-    5. You may try to give the explaination and meaning for the fourth verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the fourth verse of the song is about the following things: ((fourth verse explaination)).
-    6. You may try to give the explaination and meaning for the fifth verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the fifth verse of the song is about the following things: ((fifth verse explaination)).
-    7. You may try to give the explaination and meaning for the sixth verse of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the sixth verse of the song is about the following things: ((sixth verse explaination)).
-    8. You may try to give the explaination and meaning for the chorus of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the chorus of the song is about the following things: ((chorus explaination)).
-    9. You may try to give the explaination and meaning for the bridge of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the bridge of the song is about the following things: ((bridge explaination)).
-    10. You may try to give the explaination and meaning for the outro of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the outro of the song is about the following things: ((outro explaination)).
-    11. You may try to give the complete analysis of the song {song_name} by {artist} whose lyrics are given above.
-    12. You may try to give the mood of the song {song_name} by {artist} whose lyrics are given above.
-    13. You may try to give the genre of the song {song_name} by {artist} whose lyrics are given above.
-    14. You may try to give the theme of the song {song_name} by {artist} whose lyrics are given above.
-    15. You may try to give the message of the song {song_name} by {artist} whose lyrics are given above.
-    16. You may try to give the story of the song {song_name} by {artist} whose lyrics are given above.
-    17. You may try to give the review of the song {song_name} by {artist} whose lyrics are given above."""
+    5. You may try to give the explaination and meaning for the chorus of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the chorus of the song is about the following things: ((chorus explaination)).
+    6. You may try to give the explaination and meaning for the bridge of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the bridge of the song is about the following things: ((bridge explaination)).
+    7. You may try to give the explaination and meaning for the outro of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the outro of the song is about the following things: ((outro explaination)).
+    8. You may try to give the complete analysis of the song {song_name} by {artist} whose lyrics are given above.
+    9. You may try to give the mood of the song {song_name} by {artist} whose lyrics are given above.
+    10. You may try to give the genre of the song {song_name} by {artist} whose lyrics are given above.
+    11. You may try to give the theme of the song {song_name} by {artist} whose lyrics are given above.
+    12. You may try to give the message of the song {song_name} by {artist} whose lyrics are given above.
+    13. You may try to give the story of the song {song_name} by {artist} whose lyrics are given above.
+    14. try to give the review of the song {song_name} by {artist} whose lyrics are given above."""
+
 
     with open("prompt.txt", "w", encoding="utf-8") as f:
         f.write(prompt)
@@ -62,9 +60,19 @@ Now, please try to do the following task for me:
     7. You may try to give the complete message of the song {song_name} by {artist} whose lyrics are given above.
     8. You may try to give the complete story of the song {song_name} by {artist} whose lyrics are given above.
     9. You may try to give the complete meaning of the song {song_name} by {artist} whose lyrics are given above.
-    10. You may try to give the complete review of the song {song_name} by {artist} whose lyrics are given above."""
+    10. You may try to give the complete review of the song {song_name} by {artist} whose lyrics are given above.
+    11. enter ### to stop the generation.
+
+# your response:
+
+1. The brief summary of the song {song_name} by {artist} is as follows:
+"""
+
+
 
     with open("prompt.txt", "w", encoding="utf-8") as f:
         f.write(prompt)
+
+
 
     return prompt

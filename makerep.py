@@ -1,12 +1,12 @@
-from cgpt import get_chat_response
-from prompt import return_prompt
+from cgpt import get_chat_response, codex_reply
+from prompt import return_prompt,codex_prompt
 from azlyrics import get_lyrics
 
 import os
 from time import sleep
 
 
-def get_lyrics_explaination_and_lyrics(url):
+def get_lyrics_explaination_and_lyrics(url,codex=False):
     delay = 4
 
     try:
@@ -134,10 +134,16 @@ def get_lyrics_explaination_and_lyrics(url):
         else:
             artist_name = artist_name.capitalize()
 
+        if codex:
+            prompt = codex_prompt(song_name, artist_name, lyrics)
 
-        prompt = return_prompt(lyrics, artist_name, song_name)
+            response = codex_reply(prompt,song_name,artist_name)
 
-        response = get_chat_response(prompt)
+        else:
+
+            prompt = return_prompt(lyrics, artist_name, song_name)
+
+            response = get_chat_response(prompt)
 
         if "large language model" in response:
             raise
