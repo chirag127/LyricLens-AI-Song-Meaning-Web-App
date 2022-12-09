@@ -7,7 +7,7 @@ from time import sleep
 
 
 def get_lyrics_explaination_and_lyrics(url):
-    delay = 1
+    delay = 4
 
     try:
 

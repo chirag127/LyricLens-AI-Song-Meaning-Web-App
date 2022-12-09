@@ -5,22 +5,6 @@ I know everything about you. Please do the following task for me and Please don'
 
 I am try to make a blog which contains the analysis, review, explanation of the song {song_name} by {artist}.
 
-To do a song analysis or to explain a song, follow these steps:
-
-Read the lyrics verse-by-verse carefully and thoroughly to understand the overall message and themes of the song.
-
-Identify any literary devices, such as metaphors, similes, and imagery, and consider how they contribute to the meaning of the song.
-
-Consider the song's structure, including the number of verses and chorus, and how it contributes to the song's message and flow.
-
-Analyze the lyrics from a holistic perspective, considering the emotions, tone, and message of the song.
-
-Write down your analysis verse-by-verse, including your interpretation of the song's meaning, the literary devices used, and the song's overall impact and message.
-
-The song is best analyzed and explained when writing down your analysis verse-by-verse.
-
-To give a review of a song based on its lyrics, you can start by identifying the theme or message of the song. Then, consider the literary devices used in the lyrics, such as imagery, metaphor, and alliteration, and how they contribute to the overall meaning of the song. Additionally, you can evaluate the emotional impact of the lyrics, and how well they connect with the music to create a cohesive and compelling song. Finally, you can provide your personal opinion on the song, discussing whether you found it to be effective, engaging, and memorable.
-
 Lyrics for {song_name} by {artist} are as follows:
 
 
@@ -28,13 +12,23 @@ Lyrics for {song_name} by {artist} are as follows:
 
 Now, please try to do the following task for me:
 
-    1. Try to give a brief summary of the song above.
-    2. Try to give the verse-by-verse, complete, in-depth explaination and meaning for the song above.
-    3. Try to give the analysis of the song whose lyrics are above.
-    4. Try to give the review of the song whose lyrics are above.
-    5. Try to give the overall message of the song whose lyrics are above.
-    6. Try to give the overall theme tone, mood and feeling of the song whose lyrics are above.
-    7. Try to give the overall impact of the song whose lyrics are above.
-"""
+    1. Try to give a brief summary of the song {song_name} by {artist}.
+    2. Try to give the verse-by-verse, complete, in-depth explaination and meaning for the song {song_name} by {artist} whose lyrics are given above. Other details for this are:
+
+        A. Try to explain the meaning of the first verse, second verse, third verse, etc. of the song {song_name} by {artist} whose lyrics are given above. for example, you can say that the first verse of the song is about the following things: ((first verse explaination)).
+        B. You may try to also explain the meaning of the chorus, bridge, etc. of the song. for example, you can say that the chorus of the song is about the following things: ((chorus explaination)).
+        C. You may try to explain the chorus only once. You don't need to explain the chorus again and again in the explaination of the verses. For example, if you have already explained the chorus in the explaination of the ffirst verse, then you don't need to explain the chorus again in the explaination of the second verse, third verse, etc.
+
+    3. Try to give the complete analysis of the song {song_name} by {artist} whose lyrics are given above.
+    4. Try to give the mood of the song {song_name} by {artist} whose lyrics are given above.
+    5. Try to give the genre of the song {song_name} by {artist} whose lyrics are given above.
+    6. Try to give the theme of the song {song_name} by {artist} whose lyrics are given above.
+    7. Try to give the message of the song {song_name} by {artist} whose lyrics are given above.
+    8. Try to give the story of the song {song_name} by {artist} whose lyrics are given above.
+    9. Try to give the meaning of the song {song_name} by {artist} whose lyrics are given above.
+    10. Try to give the complete review of the song {song_name} by {artist} whose lyrics are given above."""
+
+    with open("prompt.txt", "w", encoding="utf-8") as f:
+        f.write(prompt)
 
     return prompt
