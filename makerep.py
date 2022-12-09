@@ -7,7 +7,7 @@ from time import sleep
 
 
 def get_lyrics_explaination_and_lyrics(url):
-    delay = 3
+    delay = 1
 
     try:
 
@@ -45,8 +45,95 @@ def get_lyrics_explaination_and_lyrics(url):
 
             artist_name = "Charlie Puth"
 
+        elif artist_name == "ladygaga":
+
+            artist_name = "Lady Gaga"
+
+        elif artist_name == "justinbieber":
+
+            artist_name = "Justin Bieber"
+
+        elif artist_name == "taylorswift":
+
+            artist_name = "Taylor Swift"
+
+        elif artist_name == "edshereen":
+
+            artist_name = "Ed Sheeran"
+
+        elif artist_name == "arianagrande":
+
+            artist_name = "Ariana Grande"
+
+        elif artist_name == "shawnmendes":
+
+            artist_name = "Shawn Mendes"
+
+        elif artist_name == "billieeilish":
+
+            artist_name = "Billie Eilish"
+
+        elif artist_name == "postmalone":
+
+            artist_name = "Post Malone"
+
+        elif artist_name == "lilnasx":
+
+            artist_name = "Lil Nas X"
+
+        elif artist_name == "drake":
+
+            artist_name = "Drake"
+
+        elif artist_name == "kanyewest":
+
+            artist_name = "Kanye West"
+
+        elif artist_name == "paramore":
+
+            artist_name = "Paramore"
+
+        elif artist_name == "jungkook":
+
+            artist_name = "Jungkook"
+
+        elif artist_name == "metallica":
+
+            artist_name = "Metallica"
+
+        elif artist_name == "itzy":
+
+            artist_name = "Itzy"
+
+        elif artist_name == "skillet":
+
+            artist_name = "Skillet"
+
+        elif artist_name == "jamesarthur":
+
+            artist_name = "James Arthur"
+
+        elif artist_name == "lewiscapaldi":
+
+            artist_name = "Lewis Capaldi"
+
+
+        elif artist_name == "jellyroll":
+
+            artist_name = "Jelly Roll"
+
+        elif artist_name == "steelpanther":
+
+            artist_name = "Steel Panther"
+
+        elif artist_name == "jessiemurph":
+
+            artist_name = "Jessie Murph"
+
+
         else:
-            return "Artist not found"
+            artist_name = artist_name.capitalize()
+
 
         prompt = return_prompt(lyrics, artist_name, song_name)
 
@@ -72,103 +159,10 @@ def get_lyrics_explaination_and_lyrics(url):
 
 if __name__ == "__main__":
 
-    urls = """https://www.azlyrics.com/lyrics/charlieputh/themoment.html
-https://www.azlyrics.com/lyrics/charlieputh/isuckatwritinglyrics.html
-https://www.azlyrics.com/lyrics/charlieputh/idontwannahurtyoubabyacoustic.html
-https://www.azlyrics.com/lyrics/charlieputh/nexttoyou.html
-https://www.azlyrics.com/lyrics/charlieputh/timepassesby.html
-https://www.azlyrics.com/lyrics/charlieputh/idontwannahurtyoubaby.html
-https://www.azlyrics.com/lyrics/charlieputh/iwonttellasoul.html
-https://www.azlyrics.com/lyrics/charlieputh/marvingaye.html
-https://www.azlyrics.com/lyrics/charlieputh/sometypeoflove.html
-https://www.azlyrics.com/lyrics/charlieputh/suffer.html
-https://www.azlyrics.com/lyrics/charlieputh/onecallaway.html
-https://www.azlyrics.com/lyrics/charlieputh/dangerously.html
-https://www.azlyrics.com/lyrics/charlieputh/losingmymind.html
-https://www.azlyrics.com/lyrics/charlieputh/wedonttalkanymore.html
-https://www.azlyrics.com/lyrics/charlieputh/mygospel.html
-https://www.azlyrics.com/lyrics/charlieputh/upallnight.html
-https://www.azlyrics.com/lyrics/charlieputh/leftrightleft.html
-https://www.azlyrics.com/lyrics/charlieputh/thentheresyou.html
-https://www.azlyrics.com/lyrics/charlieputh/asyouare.html
-https://www.azlyrics.com/lyrics/wizkhalifa/seeyouagain.html
-https://www.azlyrics.com/lyrics/charlieputh/river.html
-https://www.azlyrics.com/lyrics/charlieputh/doesitfeel.html
-https://www.azlyrics.com/lyrics/charlieputh/thewayiam.html
-https://www.azlyrics.com/lyrics/charlieputh/attention.html
-https://www.azlyrics.com/lyrics/charlieputh/lagirls.html
-https://www.azlyrics.com/lyrics/charlieputh/howlong.html
-https://www.azlyrics.com/lyrics/charlieputh/doneforme.html
-https://www.azlyrics.com/lyrics/charlieputh/patient.html
-https://www.azlyrics.com/lyrics/charlieputh/ifyouleavemenow.html
-https://www.azlyrics.com/lyrics/charlieputh/boy.html
-https://www.azlyrics.com/lyrics/charlieputh/slowitdown.html
-https://www.azlyrics.com/lyrics/charlieputh/change.html
-https://www.azlyrics.com/lyrics/charlieputh/somebodytoldme.html
-https://www.azlyrics.com/lyrics/charlieputh/emptycups.html
-https://www.azlyrics.com/lyrics/charlieputh/throughitall.html
-https://www.azlyrics.com/lyrics/charlieputh/thatshilarious.html
-https://www.azlyrics.com/lyrics/charlieputh/charliebequiet.html
-https://www.azlyrics.com/lyrics/charlieputh/lightswitch.html
-https://www.azlyrics.com/lyrics/charlieputh/theresafirsttimeforeverything.html
-https://www.azlyrics.com/lyrics/charlieputh/smellslikeme.html
-https://www.azlyrics.com/lyrics/charlieputh/leftandright.html
-https://www.azlyrics.com/lyrics/charlieputh/loser.html
-https://www.azlyrics.com/lyrics/charlieputh/whenyouresadimsad.html
-https://www.azlyrics.com/lyrics/charlieputh/marksonmyneck.html
-https://www.azlyrics.com/lyrics/charlieputh/tearsonmypiano.html
-https://www.azlyrics.com/lyrics/charlieputh/idontthinkthatilikeher.html
-https://www.azlyrics.com/lyrics/charlieputh/nomoredrama.html
-https://www.azlyrics.com/lyrics/eltonjohn/afterall.html
-https://www.azlyrics.com/lyrics/charlieputh/attentionbingoplayersremix.html
-https://www.azlyrics.com/lyrics/charlieputh/attentiondavidguettaremix.html
-https://www.azlyrics.com/lyrics/charlieputh/attentionoliverheldensremix.html
-https://www.azlyrics.com/lyrics/charlieputh/attentionremix.html
-https://www.azlyrics.com/lyrics/charlieputh/beautifulcorruption.html
-https://www.azlyrics.com/lyrics/charlieputh/bettyboop.html
-https://www.azlyrics.com/lyrics/charlieputh/bonapptit.html
-https://www.azlyrics.com/lyrics/charlieputh/breakagain.html
-https://www.azlyrics.com/lyrics/charlieputh/cheatingonyou.html
-https://www.azlyrics.com/lyrics/charlieputh/couldvebeen.html
-https://www.azlyrics.com/lyrics/5secondsofsummer/easierremix.html
-https://www.azlyrics.com/lyrics/charlieputh/enemy.html
-https://www.azlyrics.com/lyrics/charlieputh/free.html
-https://www.azlyrics.com/lyrics/charlieputh/fullofit.html
-https://www.azlyrics.com/lyrics/charlieputh/girlfriend.html
-https://www.azlyrics.com/lyrics/charlieputh/goround.html
-https://www.azlyrics.com/lyrics/charlieputh/hardonyourself.html
-https://www.azlyrics.com/lyrics/charlieputh/heartgocrazy.html
-https://www.azlyrics.com/lyrics/charlieputh/howlongremix.html
-https://www.azlyrics.com/lyrics/charlieputh/iwarnedmyself.html
-https://www.azlyrics.com/lyrics/charlieputh/inthedark.html
-https://www.azlyrics.com/lyrics/charlieputh/instagrammodels.html
-https://www.azlyrics.com/lyrics/charlieputh/kissmebeforeifuckinglosemymind.html
-https://www.azlyrics.com/lyrics/charlieputh/knowyoubyheart.html
-https://www.azlyrics.com/lyrics/charlieputh/luv.html
-https://www.azlyrics.com/lyrics/charlieputh/lifesgood.html
-https://www.azlyrics.com/lyrics/charlieputh/lightsgoout.html
-https://www.azlyrics.com/lyrics/charlieputh/lookatmenow.html
-https://www.azlyrics.com/lyrics/charlieputh/mother.html
-https://www.azlyrics.com/lyrics/charlieputh/mypizza.html
-https://www.azlyrics.com/lyrics/charlieputh/nothingbuttrouble.html
-https://www.azlyrics.com/lyrics/charlieputh/o2lsong.html
-https://www.azlyrics.com/lyrics/charlieputh/onecallawayremix.html
-https://www.azlyrics.com/lyrics/charlieputh/over.html
-https://www.azlyrics.com/lyrics/charlieputh/ridetomelrose.html
-https://www.azlyrics.com/lyrics/charlieputh/seeyouagainpianodemoversion.html
-https://www.azlyrics.com/lyrics/charlieputh/seventeen.html
-https://www.azlyrics.com/lyrics/charlieputh/sexyshades.html
-https://www.azlyrics.com/lyrics/charlieputh/spendthenight.html
-https://www.azlyrics.com/lyrics/charlieputh/tangerinedreams.html
-https://www.azlyrics.com/lyrics/charlieputh/thatsnothowthisworks.html
-https://www.azlyrics.com/lyrics/charlieputh/the90s.html
-https://www.azlyrics.com/lyrics/charlieputh/titanium.html
-https://www.azlyrics.com/lyrics/charlieputh/twomonths.html
-https://www.azlyrics.com/lyrics/charlieputh/whenshekissedme.html
-https://www.azlyrics.com/lyrics/charlieputh/yournametheukulelesong.html
-"""
+    with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
+        links = file.readlines()
+    urls = [link.strip() for link in links]
 
-    urls = [url.strip() for url in urls.split("\n")]
 
     for url in urls:
         get_lyrics_explaination_and_lyrics(url)
