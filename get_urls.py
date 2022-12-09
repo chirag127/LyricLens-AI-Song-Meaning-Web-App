@@ -47,9 +47,8 @@ def get_songs_urls_from_artist_url(url):
 
 
     try:
-        actual_artist_name = soup.find("h1").find("strong").text.split("Lyrics")[0].strip()
-    except Exception as error: # pylint: disable=broad-except
-        print(error)
+        actual_artist_name = soup.find("h1").text.split(" Lyrics")[0]
+    except:
         raise
 
     print(actual_artist_name)
@@ -146,7 +145,7 @@ def get_artist_urls(alphabet_url= "https://www.azlyrics.com/a.html"):
 
 if __name__ == "__main__":
 
-    get_songs_urls_from_artist_url("https://www.azlyrics.com/i/i20.html")
+    get_songs_urls_from_artist_url("https://www.azlyrics.com/s/saaraaalto.html")
 
     # for a in ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","19"]:
     #     urls = get_artist_urls(f"https://www.azlyrics.com/{a}.html")
