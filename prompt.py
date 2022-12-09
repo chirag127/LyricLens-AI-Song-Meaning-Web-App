@@ -19,15 +19,22 @@ Write down your analysis verse-by-verse, including your interpretation of the so
 
 The song is best analyzed and explained when writing down your analysis verse-by-verse.
 
+To give a review of a song based on its lyrics, you can start by identifying the theme or message of the song. Then, consider the literary devices used in the lyrics, such as imagery, metaphor, and alliteration, and how they contribute to the overall meaning of the song. Additionally, you can evaluate the emotional impact of the lyrics, and how well they connect with the music to create a cohesive and compelling song. Finally, you can provide your personal opinion on the song, discussing whether you found it to be effective, engaging, and memorable.
 
 Lyrics for {song_name} by {artist} are as follows:
 
 
 {lyrics}
 
+Now, please try to do the following task for me:
 
-Try to give the verse-by-verse, complete, in-depth explaination and meaning for the above song lyrics in detail, verse-by-verse.
-Also, try to provide the analysis of the song and review of the song, according to your understanding of the song.
+    1. Try to give a brief summary of the song above.
+    2. Try to give the verse-by-verse, complete, in-depth explaination and meaning for the song above.
+    3. Try to give the analysis of the song whose lyrics are above.
+    4. Try to give the review of the song whose lyrics are above.
+    5. Try to give the overall message of the song whose lyrics are above.
+    6. Try to give the overall theme tone, mood and feeling of the song whose lyrics are above.
+    7. Try to give the overall impact of the song whose lyrics are above.
 """
 
     return prompt
