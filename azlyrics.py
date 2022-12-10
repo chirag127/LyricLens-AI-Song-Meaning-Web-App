@@ -41,7 +41,6 @@ def get_lyrics(url="https://www.azlyrics.com/lyrics/charlieputh/themoment.html")
 
             lyrics = actual_song_name_and_lyrics.split(seperator)[1]
 
-
             return lyrics, actual_song_name
 
         html_page = urlopen(url)
@@ -73,7 +72,6 @@ if __name__ == "__main__":
     with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
         links = file.readlines()
     urls = [link.strip() for link in links]
-
 
     for url in urls:
         print(url)

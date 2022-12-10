@@ -1,12 +1,12 @@
 from cgpt import get_chat_response, codex_reply
-from prompt import return_prompt,codex_prompt
+from prompt import return_prompt, codex_prompt
 from azlyrics import get_lyrics
 
 import os
 from time import sleep
 
 
-def get_lyrics_explaination_and_lyrics(url,codex=False):
+def get_lyrics_explaination_and_lyrics(url, codex=False):
     delay = 4
 
     try:
@@ -37,13 +37,12 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
             print("Response already exists for : " + song_name)
 
             delay = 0
-            lyrics,song_name = get_lyrics(url)
+            lyrics, song_name = get_lyrics(url)
 
-            return open(file_name, "r", encoding="utf-8").read(),lyrics,song_name
+            return open(file_name, "r", encoding="utf-8").read(), lyrics, song_name
 
-        lyrics,song_name = get_lyrics(url)
+        lyrics, song_name = get_lyrics(url)
         if artist_name == "charlieputh":
-
 
             artist_name = "Charlie Puth"
 
@@ -119,7 +118,6 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
 
             artist_name = "Lewis Capaldi"
 
-
         elif artist_name == "jellyroll":
 
             artist_name = "Jelly Roll"
@@ -132,14 +130,13 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
 
             artist_name = "Jessie Murph"
 
-
         else:
             artist_name = artist_name.capitalize()
 
         if codex:
             prompt = codex_prompt(song_name, artist_name, lyrics)
 
-            response = codex_reply(prompt,song_name,artist_name)
+            response = codex_reply(prompt, song_name, artist_name)
 
         else:
 
@@ -156,7 +153,7 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
 
         print("Response successfully written to file for : " + song_name)
 
-        return response,lyrics,song_name
+        return response, lyrics, song_name
 
     except Exception as error:
         print("Error occured while fetching response for : " + song_name)
@@ -173,7 +170,6 @@ if __name__ == "__main__":
     with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
         links = file.readlines()
     urls = [link.strip() for link in links]
-
 
     for url in urls:
         get_lyrics_explaination_and_lyrics(url)

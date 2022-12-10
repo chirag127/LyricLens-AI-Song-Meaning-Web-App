@@ -1,13 +1,11 @@
+import errno
 import os
 
 
-
-def return_prompt(lyrics, artist,song_name,small_song_name):
+def return_prompt(lyrics, artist, song_name, small_song_name):
     prompt = f"""Provide a detailed verse-by-verse explanation of the song {song_name} by {artist} with a verse-by-verse breakdown of the lyrics? After your explanation, please include a summary of the song. Additionally, please provide a review or opinion of the song. The lyrics for the song are as follows:
-    
+
 {lyrics}"""
-
-
 
     filename = f"{small_song_name}.txt"
 
@@ -29,14 +27,13 @@ def return_prompt(lyrics, artist,song_name,small_song_name):
             if exc.errno != errno.EEXIST:
                 raise
 
-
     with open(full_path, "w", encoding="utf-8") as f:
         f.write(prompt)
 
-
     return prompt
 
-def codex_prompt(lyrics, artist,song_name):
+
+def codex_prompt(lyrics, artist, song_name):
     prompt = f"""I am try to make a blog which contains the analysis, review, explanation etc of the song {song_name} by {artist}.
 
 Lyrics for {song_name} by {artist} are as follows:
@@ -69,11 +66,7 @@ Now, please try to do the following task for me:
 1. The brief summary of the song {song_name} by {artist} is as follows:
 """
 
-
-
     with open("prompt.txt", "w", encoding="utf-8") as f:
         f.write(prompt)
-
-
 
     return prompt

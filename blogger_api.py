@@ -172,6 +172,7 @@
 
 import requests
 
+
 def create_blog(title, description, url, api_key):
     """Creates a new blog.
     Args:
@@ -182,12 +183,7 @@ def create_blog(title, description, url, api_key):
     Returns:
         The response from the API.
     """
-    url = 'https://www.googleapis.com/blogger/v3/blogs'
-    data = {
-        'name': title,
-        'description': description,
-        'url': url,
-        'key': api_key
-    }
+    url = "https://www.googleapis.com/blogger/v3/blogs"
+    data = {"name": title, "description": description, "url": url, "key": api_key}
     response = requests.post(url, data=data)
     return response
