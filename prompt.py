@@ -13,19 +13,19 @@ Additionally, Provide a review or opinion of the song. The lyrics for the song a
     filename = f"{small_song_name}.txt"
 
     full_path = os.path.join(artist, filename)
+    full_path = os.path.join("prompt", full_path)
 
-    if not os.path.exists(os.path.dirname(full_path)):
+    if not os.path.exists("prompt"):
         try:
-            os.makedirs(os.path.dirname(full_path))
+            os.makedirs("prompt")
         except OSError as exc:
             if exc.errno != errno.EEXIST:
                 raise
 
-    full_path = os.path.join("prompt", full_path)
 
-    if not os.path.exists(os.path.dirname(full_path)):
+    if not os.path.exists("prompt/" + artist):
         try:
-            os.makedirs(os.path.dirname(full_path))
+            os.makedirs("prompt/" + artist)
         except OSError as exc:
             if exc.errno != errno.EEXIST:
                 raise

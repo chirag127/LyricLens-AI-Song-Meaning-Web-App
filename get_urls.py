@@ -9,7 +9,7 @@ from free_proxy import FreeProxy, premium_proxies
 seperator = "==="
 
 
-def get_songs_urls_from_artist_url(url, proxy=True):
+def get_songs_urls_from_artist_url(url, proxy=False):
     """Get all URLs from the given URL which start with lyrics/artist_name"""
 
     # https://www.azlyrics.com/c/christongray.html
@@ -308,7 +308,7 @@ if __name__ == "__main__":
         "z",
         "19",
     ]:
-        # pass
-        urls = get_artist_urls_with_proxy(f"https://www.azlyrics.com/{a}.html")
+        sleep(10)
+        urls = get_artist_urls(f"https://www.azlyrics.com/{a}.html")
         for url in urls:
             get_songs_urls_from_artist_url(url)

@@ -8,7 +8,7 @@ import os
 
 
 def get_lyrics(url="https://www.azlyrics.com/lyrics/charlieputh/themoment.html"):
-    delay = 2
+    delay = 14
     seperator = "==="
     try:
         song_name = url.split("/")[-1].split(".")[0]
@@ -74,11 +74,7 @@ if __name__ == "__main__":
     urls = [link.strip() for link in links]
 
     for url in urls:
-        print(url)
         try:
             lyrics = get_lyrics(url)
-            print(lyrics)
-            print()
         except Exception as e:
             print(e)
-            print()
