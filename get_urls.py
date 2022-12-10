@@ -33,12 +33,12 @@ def get_songs_urls_from_artist_url(url, proxy=True):
     if proxy:
         try:
 
-            proxy_addresses = FreeProxy(
-                timeout=1,
-                https=True,
-            ).get()
+            # proxy_addresses = FreeProxy(
+            #     timeout=1,
+            #     https=True,
+            # ).get()
 
-            proxy_addresses = proxy_addresses + premium_proxies
+            proxy_addresses = premium_proxies
 
             for proxy_address in proxy_addresses:
                 try:
@@ -69,10 +69,12 @@ def get_songs_urls_from_artist_url(url, proxy=True):
                     traceback.print_exception(type(error), error, error.__traceback__)
                     print(f"Error: {error}")
 
+                    sleep(10)
+
             print(actual_artist_name)
         except Exception as error:
             print(f"Error: {error}")
-            proxy = False
+            raise
 
     if not proxy:
 
@@ -109,6 +111,10 @@ def get_songs_urls_from_artist_url(url, proxy=True):
         pass
     finally:
         print(f"len(urls): {len(urls)}")
+        if len(urls) == 0:
+            print("No URLs found")
+            return [], ""
+
         sleep(10)
 
     # open the file in write mode
@@ -200,12 +206,12 @@ def get_artist_urls_with_proxy(alphabet_url="https://www.azlyrics.com/a.html"):
 
     # if the file does not exist, scrape the URLs from the given URL
 
-    proxy_addresses = FreeProxy(
-        timeout=1,
-        https=True,
-    ).get()
+    # proxy_addresses = FreeProxy(
+    #     timeout=1,
+    #     https=True,
+    # ).get()
 
-    proxy_addresses = proxy_addresses + premium_proxies
+    proxy_addresses =  premium_proxies
 
     for proxy_address in proxy_addresses:
         try:
@@ -240,6 +246,7 @@ def get_artist_urls_with_proxy(alphabet_url="https://www.azlyrics.com/a.html"):
 
         except Exception as error:
             print(error)
+            sleep(10)
 
             continue
 
@@ -271,10 +278,9 @@ def get_artist_urls_with_proxy(alphabet_url="https://www.azlyrics.com/a.html"):
 
 if __name__ == "__main__":
 
-    # get_songs_urls_from_artist_url("https://www.azlyrics.com/a/a1xj1.html",True)
+    get_songs_urls_from_artist_url("https://www.azlyrics.com/c/c2c.html",True)
 
     for a in [
-        "a",
         "b",
         "c",
         "d",
@@ -302,6 +308,7 @@ if __name__ == "__main__":
         "z",
         "19",
     ]:
+        # pass
         urls = get_artist_urls_with_proxy(f"https://www.azlyrics.com/{a}.html")
         for url in urls:
             get_songs_urls_from_artist_url(url)

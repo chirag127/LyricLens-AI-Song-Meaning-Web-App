@@ -205,16 +205,16 @@ class FreeProxy:
 
 
 premium_proxies = [
-    "lgpxytav:x04r25sfaapm@185.199.229.156:7492",
-    "lgpxytav:x04r25sfaapm@185.199.228.220:7300",
-    "lgpxytav:x04r25sfaapm@185.199.231.45:8382",
-    "lgpxytav:x04r25sfaapm@188.74.210.207:6286",
-    "lgpxytav:x04r25sfaapm@188.74.183.10:8279",
-    "lgpxytav:x04r25sfaapm@188.74.210.21:6100",
-    "lgpxytav:x04r25sfaapm@45.155.68.129:8133",
-    "lgpxytav:x04r25sfaapm@154.95.36.199:6893",
-    "lgpxytav:x04r25sfaapm@45.94.47.66:8110",
-    "lgpxytav:x04r25sfaapm@144.168.217.88:8780",
+    "http://lgpxytav:x04r25sfaapm@185.199.229.156:7492",
+    "http://lgpxytav:x04r25sfaapm@185.199.228.220:7300",
+    "http://lgpxytav:x04r25sfaapm@185.199.231.45:8382",
+    "http://lgpxytav:x04r25sfaapm@188.74.210.207:6286",
+    "http://lgpxytav:x04r25sfaapm@188.74.183.10:8279",
+    "http://lgpxytav:x04r25sfaapm@188.74.210.21:6100",
+    "http://lgpxytav:x04r25sfaapm@45.155.68.129:8133",
+    "http://lgpxytav:x04r25sfaapm@154.95.36.199:6893",
+    "http://lgpxytav:x04r25sfaapm@45.94.47.66:8110",
+    "http://lgpxytav:x04r25sfaapm@144.168.217.88:8780",
 ]
 
 if __name__ == "__main__":
