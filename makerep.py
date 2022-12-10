@@ -167,9 +167,11 @@ def get_lyrics_explaination_and_lyrics(url, codex=False):
 
 if __name__ == "__main__":
 
-    with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
-        links = file.readlines()
-    urls = [link.strip() for link in links]
+    # with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
+    #     links = file.readlines()
+    # urls = [link.strip() for link in links]
 
-    for url in urls:
-        get_lyrics_explaination_and_lyrics(url)
+    # for url in urls:
+    #     get_lyrics_explaination_and_lyrics(url)
+
+    popular_

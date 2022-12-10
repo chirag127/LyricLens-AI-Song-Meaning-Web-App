@@ -1,1 +1,0 @@
-[Status Code] 500 | [Response Text] {"detail":"Hmm...something seems to have gone wrong. Maybe try me again in a little bit."}
