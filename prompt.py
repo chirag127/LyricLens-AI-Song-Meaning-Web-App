@@ -1,12 +1,38 @@
-def return_prompt(lyrics, artist,song_name):
-    prompt = f"""Could you provide a detailed verse-by-verse analysis and summary of the song {song_name} by {artist}? In your analysis, please include a verse-by-verse breakdown of the lyrics. Additionally, please provide a review or opinion of the song. The lyrics for the song are as follows:
+import os
 
+
+
+def return_prompt(lyrics, artist,song_name,small_song_name):
+    prompt = f"""Provide a detailed verse-by-verse explanation of the song {song_name} by {artist} with a verse-by-verse breakdown of the lyrics? After your explanation, please include a summary of the song. Additionally, please provide a review or opinion of the song. The lyrics for the song are as follows:
+    
 {lyrics}"""
 
 
 
-    with open("prompt.txt", "w", encoding="utf-8") as f:
+    filename = f"{small_song_name}.txt"
+
+    full_path = os.path.join(artist, filename)
+
+    if not os.path.exists(os.path.dirname(full_path)):
+        try:
+            os.makedirs(os.path.dirname(full_path))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
+
+    full_path = os.path.join("prompt", full_path)
+
+    if not os.path.exists(os.path.dirname(full_path)):
+        try:
+            os.makedirs(os.path.dirname(full_path))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
+
+
+    with open(full_path, "w", encoding="utf-8") as f:
         f.write(prompt)
+
 
     return prompt
 

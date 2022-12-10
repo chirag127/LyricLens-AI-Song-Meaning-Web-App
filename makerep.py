@@ -15,6 +15,8 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
 
         file_name = song_name + ".txt"
 
+        small_song_name = song_name
+
         artist_name = url.split("/")[-2]
 
         full_path = os.path.join(artist_name, file_name)
@@ -141,7 +143,7 @@ def get_lyrics_explaination_and_lyrics(url,codex=False):
 
         else:
 
-            prompt = return_prompt(lyrics, artist_name, song_name)
+            prompt = return_prompt(lyrics, artist_name, song_name, small_song_name)
 
             response = get_chat_response(prompt)
 
