@@ -1,12 +1,7 @@
 def return_prompt(lyrics, artist,song_name):
-    prompt = f"""Lyrics for {song_name} by {artist} are as follows:
+    prompt = f"""Could you provide a detailed verse-by-verse analysis and summary of the song {song_name} by {artist}? In your analysis, please include a verse-by-verse breakdown of the lyrics. Additionally, please provide a review or opinion of the song. The lyrics for the song are as follows:
 
-
-{lyrics}
-
-Try to tell me a verse-by-verse explanation of the song {song_name} by {artist} whose lyrics are given above in detail.
-please also try to give a overall summary and review of the song {song_name} by {artist}."""
-
+{lyrics}"""
 
 
 
