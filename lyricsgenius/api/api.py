@@ -52,9 +52,9 @@ class API(Sender):
     def __init__(self,
                  access_token,
                  response_format='plain',
-                 timeout=5,
+                 timeout=20,
                  sleep_time=0.2,
-                 retries=0,
+                 retries=5,
                  ):
         super().__init__(
             access_token=access_token,

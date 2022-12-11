@@ -19,27 +19,54 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
         song_name = actual_song_name.replace(" ", "_").lower()
 
+        # remove all non-alphanumeric characters
+        song_name = "".join([char for char in song_name if char.isalnum() or char == "_"])
+
         file_name = song_name + ".txt"
 
         artist_name = actual_artist_name.replace(" ", "_").lower()
 
+        # remove all non-alphanumeric characters
+        artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
+
         answer_full_path = os.path.join(artist_name, file_name)
 
         answer_full_path = os.path.join("response", answer_full_path)
-
-        lyrics_full_path = os.path.join(artist_name, file_name)
-
-        lyrics_full_path = os.path.join("lyrics", lyrics_full_path)
 
         if os.path.exists(answer_full_path):
             print("Response already exists for : " + song_name)
 
             return
 
-        if not exists(
+        lyrics_full_path = os.path.join(artist_name, file_name)
+
+        lyrics_full_path = os.path.join("lyrics", lyrics_full_path)
+
+        if not os.path.exists(
             "response/" + artist_name
         ):
             os.mkdir("response/" + artist_name)
+
+        if not os.path.exists(
+            "lyrics/" + artist_name
+        ):
+            os.mkdir("lyrics/" + artist_name)
+
+
+
+        lyrics = song.lyrics
+
+
+        # remove the first line of the lyrics
+
+        lyrics = lyrics.split("\n")[1:]
+
+        lyrics = "\n".join(lyrics)
+
+
+        if not os.path.exists(lyrics_full_path):
+            with open(lyrics_full_path, "w", encoding="utf-8") as file:
+                file.write(lyrics)
 
 
 
@@ -51,6 +78,8 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         else:
 
             prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
+
+            print("getting response for : " + song_name)
 
             response = get_chat_response(prompt)
 
@@ -68,6 +97,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         with open(answer_full_path, "w", encoding="utf-8") as f:
             f.write(response)
 
+        print("Response saved for : " + song_name)
 
         return response, lyrics, song_name
 
@@ -118,8 +148,15 @@ if __name__ == "__main__":
         "Lil Dicky"]
 
     for artist in popular_artists:
-        artist = get_artist(artist)
 
-        for song in artist.songs:
+        try:
+            artist = get_artist(artist)
 
-            get_lyrics_explaination_and_lyrics(song)
+            for song in artist.songs:
+
+
+
+                get_lyrics_explaination_and_lyrics(song)
+        except Exception as error:
+            print(error)
+            continue

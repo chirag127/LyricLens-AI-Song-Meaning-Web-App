@@ -70,7 +70,7 @@ class Genius(API, PublicAPI):
                  verbose=True, remove_section_headers=False,
                  skip_non_songs=True, excluded_terms=None,
                  replace_default_terms=False,
-                 retries=0,
+                 retries=5,
                  ):
         # Genius Client Constructor
         super().__init__(

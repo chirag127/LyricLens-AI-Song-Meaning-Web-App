@@ -9,7 +9,7 @@ genius = Genius("STCcxkgkFP2fdoLI24XZBGrM-6EWnxV8epXSxiBeg5Xf1uydB0Yb_a6WzKVuKTR
 
 
 def get_artist(artist_name):
-    artist = genius.search_artist(artist_name, max_songs=5,  include_features=True)
+    artist = genius.search_artist(artist_name, max_songs=10,  include_features=False)
     return artist
 
 

@@ -17,9 +17,9 @@ class Sender(object):
         self,
         access_token=None,
         response_format='plain',
-        timeout=5,
+        timeout=20,
         sleep_time=0.2,
-        retries=0,
+        retries=5,
         public_api_constructor=False,
     ):
         self._session = requests.Session()
