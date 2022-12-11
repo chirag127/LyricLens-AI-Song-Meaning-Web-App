@@ -4,6 +4,7 @@
 
 """API documentation: https://docs.genius.com/"""
 
+import contextlib
 import json
 import os
 import re
@@ -456,7 +457,7 @@ class Genius(API, PublicAPI):
                       allow_name_change=True,
                       artist_id=None,
                       include_features=False,
-                      ):
+                      song_titles_to_exclude=None):
         """Searches for a specific artist and gets their songs.
 
         This method looks for the artist by the name or by the
@@ -493,6 +494,9 @@ class Genius(API, PublicAPI):
 
             Visit :class:`Aritst <types.Artist>` for more examples.
         """
+        if song_titles_to_exclude is None:
+            song_titles_to_exclude = []
+
         def find_artist_id(search_term):
             """Finds the ID of the artist, returns the first
             result if none match the search term or returns
@@ -546,6 +550,48 @@ class Genius(API, PublicAPI):
             # Loop through each song on page of search results
             for song_info in songs_on_page['songs']:
                 # Check if song is valid (e.g. contains lyrics)
+
+                actual_song_name = song_info['title']
+
+                song_name = actual_song_name.replace(" ", "_").lower()
+
+                # remove all non-alphanumeric characters
+                song_name = "".join([char for char in song_name if char.isalnum() or char == "_"])
+
+                if (song_name in song_titles_to_exclude):
+
+
+                    if max_songs > 1:
+                        max_songs -= 1
+                    continue
+
+                # with contextlib.suppress(Exception):
+                #     print("prining song info")
+                #     print(song_info)
+                #     print("prining song info url")
+                #     print(song_info['url'])
+                #     print("prining song info title")
+
+                #     print(song_info['title'])
+
+                #     print("prining song info id")
+                #     print(song_info['id'])
+                #     print("prining song info primary artist")
+                #     print(song_info['primary_artist'])
+                #     print("prining song info primary artist name")
+                #     print(song_info['primary_artist']['name'])
+                #     print("prining song info primary artist id")
+                #     print(song_info['primary_artist']['id'])
+                #     print("prining song info primary artist image url")
+                #     print(song_info['primary_artist']['image_url'])
+                #     print("prining song info primary artist api path")
+                #     print(song_info['primary_artist']['api_path'])
+                #     print("prining song info primary artist header image url")
+                #     print(song_info['primary_artist']['header_image_url'])
+                #     print("prining song info primary artist url")
+                #     print(song_info['primary_artist']['url'])
+                #     print("prining song info primary artist iq")
+
                 if self.skip_non_songs and not self._result_is_lyrics(song_info):
                     valid = False
                 else:
@@ -561,6 +607,9 @@ class Genius(API, PublicAPI):
 
                 # Create the Song object from lyrics and metadata
                 if song_info['lyrics_state'] == 'complete':
+
+
+
                     lyrics = self.lyrics(song_url=song_info['url'])
                 else:
                     lyrics = ""

@@ -9,7 +9,7 @@ from time import sleep
 
 
 def get_lyrics_explaination_and_lyrics(song, codex=False):
-    delay = 4
+    delay = 10
 
     try:
 
@@ -83,6 +83,9 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
             response = get_chat_response(prompt)
 
+            print("got response for : " + song_name)
+
+
         if "large language model" in response:
             raise
 
@@ -136,6 +139,23 @@ if __name__ == "__main__":
         "Camila Cabello",
         "Halsey",
         "Imagine Dragons",
+        "J Balvin",
+        "J. Cole",
+        "Jaden Smith",
+        "Jason Derulo",
+        "Jonas Brothers",
+        "Justin Bieber",
+        "Kanye West",
+        "Katy Perry",
+        "Kendrick Lamar",
+        "Khalid",
+        "Lady Gaga",
+        "Lana Del Rey",
+        "Lil Nas X",
+        "Lil Wayne",
+        "Lizzo",
+        "Logic",
+        "Maroon 5",
         "Marshmello",
         "BTS",
         "Maroon 5",

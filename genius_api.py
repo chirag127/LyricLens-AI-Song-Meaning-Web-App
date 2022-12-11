@@ -1,4 +1,9 @@
 import contextlib
+import os
+import re
+import requests
+import json
+from bs4 import BeautifulSoup
 
 
 from lyricsgenius.genius import Genius
@@ -8,14 +13,34 @@ genius = Genius("STCcxkgkFP2fdoLI24XZBGrM-6EWnxV8epXSxiBeg5Xf1uydB0Yb_a6WzKVuKTR
 
 
 
-def get_artist(artist_name):
-    artist = genius.search_artist(artist_name, max_songs=10,  include_features=False)
+def get_artist(actual_artist_name):
+
+    artist_name = actual_artist_name.replace(" ", "_").lower()
+
+    # remove all non-alphanumeric characters
+    artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
+
+
+    if os.path.exists("response/" + artist_name):
+
+
+        # get all files names in the directory
+        files = os.listdir("response/" + artist_name)
+
+
+        # remove the extension
+        files = [file.split(".")[0] for file in files]
+
+    else:
+        files = []
+
+    artist = genius.search_artist(actual_artist_name, max_songs=10,  include_features=False,song_titles_to_exclude=files)
     return artist
 
 
 if __name__ == "__main__":
 
-    artist = get_artist("C2C")
+    artist = get_artist("Justin Bieber")
 
 
 
