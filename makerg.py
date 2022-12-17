@@ -97,6 +97,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
             raise
 
+        sleep(delay)
 
         with open(answer_full_path, "w", encoding="utf-8") as f:
             f.write(response)
@@ -110,9 +111,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         print(error)
         print("Response not found for : " + song_name)
 
-    finally:
 
-        sleep(delay)
 
 
 if __name__ == "__main__":
