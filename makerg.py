@@ -9,6 +9,26 @@ from time import sleep
 
 
 
+
+def line_21(actual_artist_name, actual_song_name):
+    song_name = actual_song_name.replace(" ", "_").lower()
+
+        # remove all non-alphanumeric characters
+    song_name = "".join([char for char in song_name if char.isalnum() or char == "_"])
+
+    file_name = song_name + ".txt"
+
+    artist_name = actual_artist_name.replace(" ", "_").lower()
+
+        # remove all non-alphanumeric characters
+    artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
+
+    answer_full_path = os.path.join(artist_name, file_name)
+
+    answer_full_path = os.path.join("response", answer_full_path)
+    return song_name,file_name,artist_name,answer_full_path
+
+
 def get_lyrics_explaination_and_lyrics(song, codex=False):
     delay = 10
 
@@ -17,22 +37,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         actual_artist_name = song.artist
 
         actual_song_name = song.title
-
-        song_name = actual_song_name.replace(" ", "_").lower()
-
-        # remove all non-alphanumeric characters
-        song_name = "".join([char for char in song_name if char.isalnum() or char == "_"])
-
-        file_name = song_name + ".txt"
-
-        artist_name = actual_artist_name.replace(" ", "_").lower()
-
-        # remove all non-alphanumeric characters
-        artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
-
-        answer_full_path = os.path.join(artist_name, file_name)
-
-        answer_full_path = os.path.join("response", answer_full_path)
+        song_name, file_name, artist_name, answer_full_path = line_21(actual_artist_name, actual_song_name)
 
         if os.path.exists(answer_full_path):
             print("Response already exists for : " + song_name)
