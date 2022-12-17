@@ -96,6 +96,18 @@ if __name__ == "__main__":
     import csv
     import os
     import concurrent.futures
+    songs = []
+
+
+    def process_song(song):
+        artist = song[0]
+        title = song[1]
+        album = song[2]
+        date = song[3]
+        year = song[4]
+        lyric = song[5]
+
+        get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
 
     for filename in os.listdir("csv"):
 
@@ -122,25 +134,6 @@ if __name__ == "__main__":
 
                         songs.append([artist, title, album, date, year, lyric])
 
-                    def process_song(song):
-                        artist = song[0]
-                        title = song[1]
-                        album = song[2]
-                        date = song[3]
-                        year = song[4]
-                        lyric = song[5]
-
-                        get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
-
-                    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-                        ress = executor.map(process_song, songs)
-
-
-
-
-
-
-
             else:
                 continue
         else:
@@ -156,7 +149,7 @@ if __name__ == "__main__":
                     # we want Artist,Title,Album,Date,Year,Lyric
 
 
-                    songs = []
+
 
                     for row in reader:
                         artist = row[1]
@@ -168,18 +161,9 @@ if __name__ == "__main__":
 
                         songs.append([artist, title, album, date, year, lyric])
 
-                    def process_song_2(song):
-                        artist = song[0]
-                        title = song[1]
-                        album = song[2]
-                        date = song[3]
-                        year = song[4]
-                        lyric = song[5]
-
-                        get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
-
-                    with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
-                        ress = executor.map(process_song_2, songs)
-
             else:
                 continue
+
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        ress = executor.map(process_song, songs)

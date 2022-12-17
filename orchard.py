@@ -83,6 +83,9 @@ def get_orchard_response(prompt="hi, how are you?"):
 
     response_json = response.json()
 
+    # Printing the response from the server.
+    # print(response_json)
+
     innerText = response_json['responses'][0]['innerText']
 
 
