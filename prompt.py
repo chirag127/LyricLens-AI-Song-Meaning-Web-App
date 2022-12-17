@@ -7,6 +7,7 @@ def return_prompt(lyrics, artist,song_name,small_song_name):
 a verse-by-verse breakdown of the lyrics?
 After your explanation,Include a summary of the song.
 Additionally, Provide a review or opinion of the song.
+Also Include Linguistic analysis of song lyrics to detect and interpret emotions, social tendencies, and language style which helps analyze emotions and feelings that musical artists express in their songs.
 
 The lyrics for the song are as follows:
 

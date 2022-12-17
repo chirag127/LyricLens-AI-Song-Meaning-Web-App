@@ -1,4 +1,5 @@
-from cgpt import get_chat_response, codex_reply
+from cgpt import codex_reply
+from orchard import get_orchard_response
 from prompt import return_prompt, codex_prompt
 from genius_api import get_artist
 
@@ -81,7 +82,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
             print("getting response for : " + song_name)
 
-            response = get_chat_response(prompt)
+            response = get_orchard_response(prompt)
 
             print("got response for : " + song_name)
 
@@ -124,10 +125,10 @@ if __name__ == "__main__":
     #     get_lyrics_explaination_and_lyrics(url)
 
     popular_artists = [
-        "Justin Bieber",
-        "Charlie Puth",
-        "Ed Sheeran",
-        "Ariana Grande",
+        # "Justin Bieber",
+        # "Charlie Puth",
+        # "Ed Sheeran",
+        # "Ariana Grande",
         "Shawn Mendes",
         "Billie Eilish",
         "Nicki Minaj",

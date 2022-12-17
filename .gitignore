@@ -161,3 +161,4 @@ cython_debug/
 prompt.txt
 
 prompt
+config.json
