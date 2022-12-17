@@ -40,7 +40,7 @@ def codex_reply(message, song_name, artist):
 
     response = openai.Completion.create(
         model="code-davinci-002",
-        prompt="",
+        prompt=message,
         temperature=0.4,
         max_tokens=1717,
         top_p=1,
@@ -55,11 +55,7 @@ def codex_reply(message, song_name, artist):
 
     answer = response.choices[0].text
 
-    answer = (
-        f"1. The summary of the song {song_name} by {artist} is as follows:{answer}"
-    )
-
-    return answer
+    return f"1. The summary of the song {song_name} by {artist} is as follows:{answer}"
 
 
 if __name__ == "__main__":

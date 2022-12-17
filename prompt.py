@@ -26,9 +26,9 @@ The lyrics for the song are as follows:
                 raise
 
 
-    if not os.path.exists("prompt/" + artist):
+    if not os.path.exists(f"prompt/{artist}"):
         try:
-            os.makedirs("prompt/" + artist)
+            os.makedirs(f"prompt/{artist}")
         except OSError as exc:
             if exc.errno != errno.EEXIST:
                 raise
@@ -65,7 +65,8 @@ Now, please try to do the following task for me:
     8. You may try to give the complete story of the song {song_name} by {artist} whose lyrics are given above.
     9. You may try to give the complete meaning of the song {song_name} by {artist} whose lyrics are given above.
     10. You may try to give the complete review of the song {song_name} by {artist} whose lyrics are given above.
-    11. enter ### to stop the generation.
+    11. You may try to give the complete description of the song {song_name} by {artist} whose lyrics are given above.
+    12. enter ### to stop the generation.
 
 # your response:
 

@@ -13,14 +13,12 @@ from time import sleep
 def line_21(actual_artist_name, actual_song_name):
     song_name = actual_song_name.replace(" ", "_").lower()
 
-        # remove all non-alphanumeric characters
     song_name = "".join([char for char in song_name if char.isalnum() or char == "_"])
 
-    file_name = song_name + ".txt"
+    file_name = f"{song_name}.txt"
 
     artist_name = actual_artist_name.replace(" ", "_").lower()
 
-        # remove all non-alphanumeric characters
     artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
 
     answer_full_path = os.path.join(artist_name, file_name)
@@ -40,7 +38,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         song_name, file_name, artist_name, answer_full_path = line_21(actual_artist_name, actual_song_name)
 
         if os.path.exists(answer_full_path):
-            print("Response already exists for : " + song_name)
+            print(f"Response already exists for : {song_name}")
 
             return
 
@@ -48,15 +46,11 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
         lyrics_full_path = os.path.join("lyrics", lyrics_full_path)
 
-        if not os.path.exists(
-            "response/" + artist_name
-        ):
-            os.mkdir("response/" + artist_name)
+        if not os.path.exists(f"response/{artist_name}"):
+            os.mkdir(f"response/{artist_name}")
 
-        if not os.path.exists(
-            "lyrics/" + artist_name
-        ):
-            os.mkdir("lyrics/" + artist_name)
+        if not os.path.exists(f"lyrics/{artist_name}"):
+            os.mkdir(f"lyrics/{artist_name}")
 
 
 
@@ -85,11 +79,11 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
             prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
 
-            print("getting response for : " + song_name)
+            print(f"getting response for : {song_name}")
 
             response = get_orchard_response(prompt)
 
-            print("got response for : " + song_name)
+            print(f"got response for : {song_name}")
 
 
         if "large language model" in response:
@@ -107,16 +101,14 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         with open(answer_full_path, "w", encoding="utf-8") as f:
             f.write(response)
 
-        print("Response saved for : " + song_name)
+        print(f"Response saved for : {song_name}")
 
         return response, lyrics, song_name
 
     except Exception as error:
-        print("Error occured while fetching response for : " + song_name)
+        print(f"Error occured while fetching response for : {song_name}")
         print(error)
-        print("Response not found for : " + song_name)
-
-
+        print(f"Response not found for : {song_name}")
 
 
 if __name__ == "__main__":
@@ -181,7 +173,7 @@ if __name__ == "__main__":
 
 
 
-                get_lyrics_explaination_and_lyrics(song)
+                get_lyrics_explaination_and_lyrics(song,True)
         except Exception as error:
             print(error)
             continue
