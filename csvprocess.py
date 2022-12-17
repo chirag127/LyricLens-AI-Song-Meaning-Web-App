@@ -4,10 +4,11 @@ from orchard import get_orchard_response
 import os
 from time import sleep
 from makerg import line_21
+from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 10
+    delay = 1
 
     try:
 
@@ -43,9 +44,9 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         # remove the first line of the lyrics
 
-        lyrics = lyrics.split("\n")[1:]
+        # lyrics = lyrics.split("\n")[1:]
 
-        lyrics = "\n".join(lyrics)
+        # lyrics = "\n".join(lyrics)
 
 
         if not os.path.exists(lyrics_full_path):
@@ -96,27 +97,54 @@ if __name__ == "__main__":
     import os
 
     for filename in os.listdir("csv"):
-        if filename.endswith(".csv"):
-            print("Processing " + filename)
-            with open("csv/" + filename, "r") as f:
-                reader = csv.reader(f)
 
-                # skip header
-                next(reader)
+        if filename == "ArianaGrande.csv":
+            if filename.endswith(".csv"):
+                print("Processing " + filename)
+                with open("csv/" + filename, "r") as f:
+                    reader = csv.reader(f)
 
-                # header was Artist,Title,Album,Date,Lyric,Year
-                # we want Artist,Title,Album,Date,Year,Lyric
+                    # skip header
+                    next(reader)
 
-                for row in reader:
-                    artist = row[0]
-                    title = row[1]
-                    album = row[2]
-                    date = row[3]
-                    year = row[5]
-                    lyric = row[4]
+                    # header was Artist,Title,Album,Date,Lyric,Year
+                    # we want Artist,Title,Album,Date,Year,Lyric
 
-                    get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
+                    for row in reader:
+                        artist = row[0]
+                        title = row[1]
+                        album = row[2]
+                        date = row[3]
+                        year = row[5]
+                        lyric = row[4]
+
+                        get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
 
 
+            else:
+                continue
         else:
-            continue
+            if filename.endswith(".csv"):
+                print("Processing " + filename)
+                with open("csv/" + filename, "r") as f:
+                    reader = csv.reader(f)
+
+                    # skip header
+                    next(reader)
+
+                    # header was ,Artist,Title,Album,Year,Date,Lyric
+                    # we want Artist,Title,Album,Date,Year,Lyric
+
+                    for row in reader:
+                        artist = row[1]
+                        title = row[2]
+                        album = row[3]
+                        date = row[4]
+                        year = row[5]
+                        lyric = row[6]
+
+
+                        get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
+
+            else:
+                continue
