@@ -19,7 +19,7 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
         song_name, file_name, artist_name, answer_full_path = line_21(actual_artist_name, actual_song_name)
 
         if os.path.exists(answer_full_path):
-            print("Response already exists for : " + song_name)
+            print(f"Response already exists for : {song_name}")
 
             return
 
@@ -27,15 +27,11 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         lyrics_full_path = os.path.join("lyrics", lyrics_full_path)
 
-        if not os.path.exists(
-            "response/" + artist_name
-        ):
-            os.mkdir("response/" + artist_name)
+        if not os.path.exists(f"response/{artist_name}"):
+            os.mkdir(f"response/{artist_name}")
 
-        if not os.path.exists(
-            "lyrics/" + artist_name
-        ):
-            os.mkdir("lyrics/" + artist_name)
+        if not os.path.exists(f"lyrics/{artist_name}"):
+            os.mkdir(f"lyrics/{artist_name}")
 
 
 
@@ -59,11 +55,11 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
 
-        print("getting response for : " + song_name)
+        print(f"getting response for : {song_name}")
 
         response = get_orchard_response(prompt)
 
-        print("got response for : " + song_name)
+        print(f"got response for : {song_name}")
 
         sleep(delay)
 
@@ -82,14 +78,14 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
         with open(answer_full_path, "w", encoding="utf-8") as f:
             f.write(response)
 
-        print("Response saved for : " + song_name)
+        print(f"Response saved for : {song_name}")
 
         return response, lyrics, song_name
 
     except Exception as error:
-        print("Error occured while fetching response for : " + song_name)
+        print(f"Error occured while fetching response for : {song_name}")
         print(error)
-        print("Response not found for : " + song_name)
+        print(f"Response not found for : {song_name}")
 
 if __name__ == "__main__":
 
@@ -165,5 +161,5 @@ if __name__ == "__main__":
                 continue
 
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-        ress = executor.map(process_song, songs)
+    for song in songs:
+        process_song(song)

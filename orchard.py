@@ -82,14 +82,9 @@ def get_orchard_response(prompt="hi, how are you?"):
     # Output:{"run_id":"c13d2237-d971-4cda-b8a7-2dd1a2979a92","responses":[{"innerText":"I'm helping people with their writing and providing them with useful information on a wide range of topics. What kind of help do you need?"}]}
 
     response_json = response.json()
+    print(response_json)
 
-    # Printing the response from the server.
-    # print(response_json)
-
-    innerText = response_json['responses'][0]['innerText']
-
-
-    return innerText
+    return response_json['responses'][0]['innerText']
 
 
 if __name__ == "__main__":
