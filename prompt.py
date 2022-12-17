@@ -3,7 +3,7 @@ import os
 
 
 def return_prompt(lyrics, artist,song_name,small_song_name):
-    prompt = f"""Provide a detailed verse-by-verse explanation of the song {song_name} by {artist} with
+    prompt = f"""Provide a complete detailed comprehensive in-depth verse-by-verse explanation of the song {song_name} by {artist} with
 a verse-by-verse breakdown of the lyrics?
 After your explanation,Include a summary of the song.
 Additionally, Provide a review or opinion of the song.

@@ -95,6 +95,7 @@ if __name__ == "__main__":
 
     import csv
     import os
+    import concurrent.futures
 
     for filename in os.listdir("csv"):
 
@@ -109,6 +110,7 @@ if __name__ == "__main__":
 
                     # header was Artist,Title,Album,Date,Lyric,Year
                     # we want Artist,Title,Album,Date,Year,Lyric
+                    songs = []
 
                     for row in reader:
                         artist = row[0]
@@ -118,7 +120,25 @@ if __name__ == "__main__":
                         year = row[5]
                         lyric = row[4]
 
+                        songs.append([artist, title, album, date, year, lyric])
+
+                    def process_song(song):
+                        artist = song[0]
+                        title = song[1]
+                        album = song[2]
+                        date = song[3]
+                        year = song[4]
+                        lyric = song[5]
+
                         get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
+
+                    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+                        ress = executor.map(process_song, songs)
+
+
+
+
+
 
 
             else:
@@ -135,16 +155,31 @@ if __name__ == "__main__":
                     # header was ,Artist,Title,Album,Year,Date,Lyric
                     # we want Artist,Title,Album,Date,Year,Lyric
 
+
+                    songs = []
+
                     for row in reader:
                         artist = row[1]
                         title = row[2]
                         album = row[3]
-                        date = row[4]
-                        year = row[5]
+                        date = row[5]
+                        year = row[4]
                         lyric = row[6]
 
+                        songs.append([artist, title, album, date, year, lyric])
+
+                    def process_song_2(song):
+                        artist = song[0]
+                        title = song[1]
+                        album = song[2]
+                        date = song[3]
+                        year = song[4]
+                        lyric = song[5]
 
                         get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric)
+
+                    with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
+                        ress = executor.map(process_song_2, songs)
 
             else:
                 continue
