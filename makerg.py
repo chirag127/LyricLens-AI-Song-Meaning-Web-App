@@ -174,6 +174,8 @@ if __name__ == "__main__":
 
 
                 get_lyrics_explaination_and_lyrics(song,True)
+
+                sleep(10)
         except Exception as error:
             print(error)
             continue
