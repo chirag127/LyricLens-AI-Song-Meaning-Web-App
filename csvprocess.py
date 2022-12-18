@@ -8,7 +8,7 @@ from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 20
+    delay = 25
 
     try:
 
@@ -92,11 +92,9 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
         print(error)
         print(f"Response not found for : {song_name}")
 
-if __name__ == "__main__":
-
+def main():
     import csv
     import os
-    import concurrent.futures
     songs = []
 
 
@@ -168,3 +166,7 @@ if __name__ == "__main__":
 
     for song in songs:
         process_song(song)
+
+
+if __name__ == "__main__":
+    main()

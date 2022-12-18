@@ -110,8 +110,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         print(error)
         print(f"Response not found for : {song_name}")
 
-
-if __name__ == "__main__":
+def main():
 
     # with open("azlyrics_links.txt", "r", encoding="utf-8") as file:
     #     links = file.readlines()
@@ -179,3 +178,7 @@ if __name__ == "__main__":
         except Exception as error:
             print(error)
             continue
+
+
+if __name__ == "__main__":
+    main()

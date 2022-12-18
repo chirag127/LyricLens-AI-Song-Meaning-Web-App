@@ -50,7 +50,7 @@ def line_5(prompt):  # sourcery skip: inline-immediately-returned-variable
                     'index': 1,
                     'createdAt': '2022-12-18T07:48:29.298Z',
                     'type': 'instruction',
-                    'messageText': 'hi',
+                    'messageText': prompt,
                     'innerText': "Hi, I'm Orchard! Ask me anything. If you want to edit your writing, select some text and you'll see a preview of it below. Try using a template from the dropdown!",
                     'childrenIds': [
                         '2159a744-9696-4a66-b020-d2a082452e05',
