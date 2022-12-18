@@ -8,7 +8,7 @@ from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 1
+    delay = 7
 
     try:
 
@@ -72,6 +72,11 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         if "I don't understand" in response:
 
+            raise
+
+        if "You've made too many requests!" in response:
+
+            print("You've made too many requests!")
             raise
 
 
