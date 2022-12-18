@@ -8,7 +8,7 @@ from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 7
+    delay = 15
 
     try:
 

@@ -9,12 +9,13 @@ def get_orchard_response(prompt="hi, how are you?"):
 
     return response_json['responses'][0]['innerText']
 
-def line_5(prompt):
+def line_5(prompt):  # sourcery skip: inline-immediately-returned-variable
+
     headers = {
         'authority': 'api.orchard.ink',
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'en-US,en;q=0.9',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjcxOTQ3MzkxLCJzdWIiOiIwZWRhYTg2MS1hNzNkLTRhZTMtOGRjYS04ZTk2MjA2NmE0MDgiLCJlbWFpbCI6Inl0dHViZTM1QGdtYWlsLmNvbSIsInBob25lIjoiIiwiYXBwX21ldGFkYXRhIjp7InByb3ZpZGVyIjoiZ29vZ2xlIiwicHJvdmlkZXJzIjpbImdvb2dsZSJdfSwidXNlcl9tZXRhZGF0YSI6eyJhdmF0YXJfdXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUVkRlRwN0dKTHRBaGZRc2puTndUNjhaektGRkVFN2Vzel8za3FfendHbGM9czk2LWMiLCJlbWFpbCI6Inl0dHViZTM1QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmdWxsX25hbWUiOiJBYmhpbmF2IEdveWFsIiwiaXNzIjoiaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vdXNlcmluZm8vdjIvbWUiLCJuYW1lIjoiQWJoaW5hdiBHb3lhbCIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BRWRGVHA3R0pMdEFoZlFzam5Od1Q2OFp6S0ZGRUU3ZXN6XzNrcV96d0dsYz1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTAzNTAwMTQ2NjI3MDg2NzA0MDE4Iiwic3ViIjoiMTAzNTAwMTQ2NjI3MDg2NzA0MDE4In0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE2NzEzNDI1OTF9XSwic2Vzc2lvbl9pZCI6IjgzMDUxMWI3LThjYjItNGQ5Ny1hODJkLWNlOGQwZmI4NzA0ZiJ9.AUXDF4_XuXLmNmdZsiDcDVsDHm9k3kHWFjHBxNI00hc',
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjcxOTQ5MDkyLCJzdWIiOiI0NzUzMDZjNS1jOWEyLTRjNmMtYmE5MS05NGFiODIyYjdkMjgiLCJlbWFpbCI6InN0b3JhZ2VjNTZAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BRWRGVHA3QkJWVDRZTlRIYXh2WVhhaWdRdktUa2NCdHFoeWZReEdwRUpENz1zOTYtYyIsImVtYWlsIjoic3RvcmFnZWM1NkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiQ2xvdWQgU3RvcmFnZSIsImlzcyI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3VzZXJpbmZvL3YyL21lIiwibmFtZSI6IkNsb3VkIFN0b3JhZ2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUVkRlRwN0JCVlQ0WU5USGF4dllYYWlnUXZLVGtjQnRxaHlmUXhHcEVKRDc9czk2LWMiLCJwcm92aWRlcl9pZCI6IjEwNjcyMTk2Njg1OTI2MzY3MzQ4OSIsInN1YiI6IjEwNjcyMTk2Njg1OTI2MzY3MzQ4OSJ9LCJyb2xlIjoiYXV0aGVudGljYXRlZCIsImFhbCI6ImFhbDEiLCJhbXIiOlt7Im1ldGhvZCI6Im9hdXRoIiwidGltZXN0YW1wIjoxNjcxMzQ0MjkyfV0sInNlc3Npb25faWQiOiI0MjlhZTRhMi1kODllLTQwZWYtOTE4OC1lOGVlYWQ2NTU5OWQifQ.O9lAODgRpBgmXd1sYWCR1xQdnpQ9CZjmD2VO7uePVK0',
         'content-type': 'application/json',
         'origin': 'https://www.orchard.ink',
         'referer': 'https://www.orchard.ink/',
@@ -30,45 +31,45 @@ def line_5(prompt):
     json_data = {
         'thread': {
             'id': 'default',
-            'createdAt': '2022-12-18T05:49:59.327Z',
+            'createdAt': '2022-12-15T07:18:26.968Z',
             'messages': {
                 'root': {
                     'id': 'root',
                     'index': 0,
-                    'createdAt': '2022-12-18T05:49:59.328Z',
+                    'createdAt': '2022-12-15T07:18:26.968Z',
                     'type': 'response',
                     'messageText': "Hi, I'm Orchard! Ask me anything. If you want to edit your writing, select some text and you'll see a preview of it below. Try using a template from the dropdown!",
                     'innerText': "Hi, I'm Orchard! Ask me anything. If you want to edit your writing, select some text and you'll see a preview of it below. Try using a template from the dropdown!",
                     'childrenIds': [
-                        '10da039a-9db5-4ea8-a5bf-38b9fee940ef',
+                        'a73979b6-9176-4586-9574-77269167e1a3',
                     ],
                     'rejected': False,
                 },
-                '10da039a-9db5-4ea8-a5bf-38b9fee940ef': {
-                    'id': '10da039a-9db5-4ea8-a5bf-38b9fee940ef',
+                'a73979b6-9176-4586-9574-77269167e1a3': {
+                    'id': 'a73979b6-9176-4586-9574-77269167e1a3',
                     'index': 1,
-                    'createdAt': '2022-12-18T05:50:10.712Z',
+                    'createdAt': '2022-12-18T06:19:38.179Z',
                     'type': 'instruction',
                     'messageText': prompt,
                     'innerText': "Hi, I'm Orchard! Ask me anything. If you want to edit your writing, select some text and you'll see a preview of it below. Try using a template from the dropdown!",
                     'childrenIds': [
-                        '97e3c14c-0a54-4783-9265-84d6110edcf9',
+                        '0a1fae92-8fa0-4f90-8209-bbbee6fb26f2',
                     ],
                     'rejected': False,
                     'templateId': '2c77110a-5644-4a1e-bfe4-f0ed2aebc94a',
                     'iconKey': 'Custom',
                     'parentId': 'root',
                 },
-                '97e3c14c-0a54-4783-9265-84d6110edcf9': {
-                    'id': '97e3c14c-0a54-4783-9265-84d6110edcf9',
+                '0a1fae92-8fa0-4f90-8209-bbbee6fb26f2': {
+                    'id': '0a1fae92-8fa0-4f90-8209-bbbee6fb26f2',
                     'index': 1,
-                    'createdAt': '2022-12-18T05:50:10.718Z',
+                    'createdAt': '2022-12-18T06:19:38.183Z',
                     'type': 'response',
                     'messageText': 'Loading Response #1...',
                     'innerText': '',
                     'childrenIds': [],
                     'rejected': False,
-                    'parentId': '10da039a-9db5-4ea8-a5bf-38b9fee940ef',
+                    'parentId': 'a73979b6-9176-4586-9574-77269167e1a3',
                 },
             },
             'numResponses': 2,
@@ -76,11 +77,19 @@ def line_5(prompt):
         },
         'template_id': '2c77110a-5644-4a1e-bfe4-f0ed2aebc94a',
         'template_name': 'Custom',
-        'document_id': 'df83e486-7e09-4aaa-8226-46d9415e86f6',
+        'document_id': 'f8589a2e-c594-498d-8e1a-9ee8fdca3320',
         'is_retry': False,
     }
 
     response = requests.post('https://api.orchard.ink/generate_responses', headers=headers, json=json_data)
+
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+#data = '{"thread":{"id":"default","createdAt":"2022-12-15T07:18:26.968Z","messages":{"root":{"id":"root","index":0,"createdAt":"2022-12-15T07:18:26.968Z","type":"response","messageText":"Hi, I\'m Orchard! Ask me anything. If you want to edit your writing, select some text and you\'ll see a preview of it below. Try using a template from the dropdown!","innerText":"Hi, I\'m Orchard! Ask me anything. If you want to edit your writing, select some text and you\'ll see a preview of it below. Try using a template from the dropdown!","childrenIds":["a73979b6-9176-4586-9574-77269167e1a3"],"rejected":false},"a73979b6-9176-4586-9574-77269167e1a3":{"id":"a73979b6-9176-4586-9574-77269167e1a3","index":1,"createdAt":"2022-12-18T06:19:38.179Z","type":"instruction","messageText":"j","innerText":"Hi, I\'m Orchard! Ask me anything. If you want to edit your writing, select some text and you\'ll see a preview of it below. Try using a template from the dropdown!","childrenIds":["0a1fae92-8fa0-4f90-8209-bbbee6fb26f2"],"rejected":false,"templateId":"2c77110a-5644-4a1e-bfe4-f0ed2aebc94a","iconKey":"Custom","parentId":"root"},"0a1fae92-8fa0-4f90-8209-bbbee6fb26f2":{"id":"0a1fae92-8fa0-4f90-8209-bbbee6fb26f2","index":1,"createdAt":"2022-12-18T06:19:38.183Z","type":"response","messageText":"Loading Response #1...","innerText":"","childrenIds":[],"rejected":false,"parentId":"a73979b6-9176-4586-9574-77269167e1a3"}},"numResponses":2,"numInstructions":1},"template_id":"2c77110a-5644-4a1e-bfe4-f0ed2aebc94a","template_name":"Custom","document_id":"f8589a2e-c594-498d-8e1a-9ee8fdca3320","is_retry":false}'
+#response = requests.post('https://api.orchard.ink/generate_responses', headers=headers, data=data)    return response
+
+    print(response.text)
+
     return response
 
 
