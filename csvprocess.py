@@ -8,7 +8,7 @@ from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 25
+    delay = 30
 
     try:
 
@@ -55,13 +55,13 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
 
+        sleep(delay)
+
         print(f"getting response for : {song_name}")
 
         response = get_orchard_response(prompt)
 
         print(f"got response for : {song_name}")
-
-        sleep(delay)
 
 
         if "large language model" in response:
