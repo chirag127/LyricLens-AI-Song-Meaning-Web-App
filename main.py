@@ -70,9 +70,8 @@ except Exception as error:  # pylint: disable=broad-except
     print(error)
     print("Error")
 
-
-# add the path to the repo to the system path
-sys.path.append(os.getcwd())
+WORKING_DIRECTORY = os.path.join(WORKING_DIRECTORY, REPO_NAME)
+os.chdir(WORKING_DIRECTORY)
 
 from csvprocess import main  # pylint: disable=wrong-import-position
 
