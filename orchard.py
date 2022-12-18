@@ -2,6 +2,14 @@ import requests
 def get_orchard_response(prompt="hi, how are you?"):
     """Generate a response to the user's prompt."""
 
+    response = line_5(prompt)
+
+    response_json = response.json()
+    # print(response_json)
+
+    return response_json['responses'][0]['innerText']
+
+def line_5(prompt):
     headers = {
         'authority': 'api.orchard.ink',
         'accept': 'application/json, text/plain, */*',
@@ -73,11 +81,7 @@ def get_orchard_response(prompt="hi, how are you?"):
     }
 
     response = requests.post('https://api.orchard.ink/generate_responses', headers=headers, json=json_data)
-
-    response_json = response.json()
-    # print(response_json)
-
-    return response_json['responses'][0]['innerText']
+    return response
 
 
 if __name__ == "__main__":
