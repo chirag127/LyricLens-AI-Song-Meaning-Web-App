@@ -55,7 +55,6 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
 
-        sleep(delay)
 
         print(f"getting response for : {song_name}")
 
@@ -63,6 +62,7 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         print(f"got response for : {song_name}")
 
+        sleep(delay)
 
         if "large language model" in response:
             raise
@@ -146,9 +146,6 @@ def main():
 
                     # header was ,Artist,Title,Album,Year,Date,Lyric
                     # we want Artist,Title,Album,Date,Year,Lyric
-
-
-
 
                     for row in reader:
                         artist = row[1]
