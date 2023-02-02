@@ -1,5 +1,3 @@
-from orchard import get_orchard_response
-
 
 import os
 from time import sleep
@@ -8,7 +6,7 @@ from prompt import return_prompt
 
 
 def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyric):
-    delay = 30
+    delay = 0
 
     try:
 
@@ -58,7 +56,7 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         print(f"getting response for : {song_name}")
 
-        response = get_orchard_response(prompt)
+        response = chat(prompt)
 
         print(f"got response for : {song_name}")
 

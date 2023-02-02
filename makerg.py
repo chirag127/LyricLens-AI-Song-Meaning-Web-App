@@ -5,6 +5,46 @@ from genius_api import get_artist
 
 import os
 from time import sleep
+from concurrent.futures import ThreadPoolExecutor
+import os
+import random
+import time
+from revChatGPT.Official import Chatbot
+
+# a = random.randint(1, 1000)
+# print("Sleeping for {} seconds".format(a))
+# sleep(a)
+
+# Initialize chatbot
+
+
+def chat(i):
+
+    PROMPT = i
+
+    # with open(file_name, "w") as f:
+
+    #     f.write(PROMPT + "\n")
+    # print(PROMPT)
+    # divide prompt by first space
+    # PROMPT = PROMPT.split(" ", 1)[1]
+
+    # PROMPT = "write in detail to explain the concept of " + PROMPT
+    start = time.perf_counter()
+    print("User: " + PROMPT)
+
+    api_keys = ["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",
+                "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", "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"]
+
+    chatbot = Chatbot(api_key=random.choice(api_keys))
+
+    response = chatbot.ask(PROMPT)
+    print("ChatGPT: " + response["choices"][0]["text"])
+    end = time.perf_counter()
+
+    print(f"Time taken: {end - start:0.4f} seconds")
+
+    return response["choices"][0]["text"]
 
 
 
@@ -81,8 +121,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
             print(f"getting response for : {song_name}")
 
-            response = get_orchard_response(prompt)
-
+            response = chat(prompt)
             print(f"got response for : {song_name}")
 
 

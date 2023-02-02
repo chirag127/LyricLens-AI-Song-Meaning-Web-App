@@ -1,4 +1,4 @@
-from revChatGPT.revChatGPT import Chatbot
+from revChatGPT.Official import Chatbot
 # from pychatgpt import Chat
 import os
 import openai
