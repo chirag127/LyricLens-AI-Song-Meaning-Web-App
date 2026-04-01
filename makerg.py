@@ -1,15 +1,13 @@
-from cgpt import codex_reply
-from orchard import get_orchard_response
-from prompt import return_prompt, codex_prompt
-from genius_api import get_artist
-
-import os
-from time import sleep
-from concurrent.futures import ThreadPoolExecutor
 import os
 import random
 import time
+from time import sleep
+
 from revChatGPT.Official import Chatbot
+
+from cgpt import codex_reply
+from genius_api import get_artist
+from prompt import codex_prompt, return_prompt
 
 # a = random.randint(1, 1000)
 # print("Sleeping for {} seconds".format(a))
@@ -33,8 +31,11 @@ def chat(i):
     start = time.perf_counter()
     print("User: " + PROMPT)
 
-    api_keys = ["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",
-                "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", "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"]
+    api_keys = [
+        "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",
+        "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",
+        "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",
+    ]
 
     chatbot = Chatbot(api_key=random.choice(api_keys))
 
@@ -47,9 +48,6 @@ def chat(i):
     return response["choices"][0]["text"]
 
 
-
-
-
 def line_21(actual_artist_name, actual_song_name):
     song_name = actual_song_name.replace(" ", "_").lower()
 
@@ -59,12 +57,14 @@ def line_21(actual_artist_name, actual_song_name):
 
     artist_name = actual_artist_name.replace(" ", "_").lower()
 
-    artist_name = "".join([char for char in artist_name if char.isalnum() or char == "_"])
+    artist_name = "".join(
+        [char for char in artist_name if char.isalnum() or char == "_"]
+    )
 
     answer_full_path = os.path.join(artist_name, file_name)
 
     answer_full_path = os.path.join("response", answer_full_path)
-    return song_name,file_name,artist_name,answer_full_path
+    return song_name, file_name, artist_name, answer_full_path
 
 
 def get_lyrics_explaination_and_lyrics(song, codex=False):
@@ -75,7 +75,9 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         actual_artist_name = song.artist
 
         actual_song_name = song.title
-        song_name, file_name, artist_name, answer_full_path = line_21(actual_artist_name, actual_song_name)
+        song_name, file_name, artist_name, answer_full_path = line_21(
+            actual_artist_name, actual_song_name
+        )
 
         if os.path.exists(answer_full_path):
             print(f"Response already exists for : {song_name}")
@@ -92,10 +94,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         if not os.path.exists(f"lyrics/{artist_name}"):
             os.mkdir(f"lyrics/{artist_name}")
 
-
-
         lyrics = song.lyrics
-
 
         # remove the first line of the lyrics
 
@@ -103,12 +102,9 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
         lyrics = "\n".join(lyrics)
 
-
         if not os.path.exists(lyrics_full_path):
             with open(lyrics_full_path, "w", encoding="utf-8") as file:
                 file.write(lyrics)
-
-
 
         if codex:
             prompt = codex_prompt(song_name, artist_name, lyrics)
@@ -117,13 +113,14 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
 
         else:
 
-            prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
+            prompt = return_prompt(
+                lyrics, actual_artist_name, actual_song_name, song_name
+            )
 
             print(f"getting response for : {song_name}")
 
             response = chat(prompt)
             print(f"got response for : {song_name}")
-
 
         if "large language model" in response:
             raise
@@ -148,6 +145,7 @@ def get_lyrics_explaination_and_lyrics(song, codex=False):
         print(f"Error occured while fetching response for : {song_name}")
         print(error)
         print(f"Response not found for : {song_name}")
+
 
 def main():
 
@@ -200,7 +198,8 @@ def main():
         "Logic",
         "Bruno Mars",
         "Lizzo",
-        "Lil Dicky"]
+        "Lil Dicky",
+    ]
 
     for artist in popular_artists:
 
@@ -209,9 +208,7 @@ def main():
 
             for song in artist.songs:
 
-
-
-                get_lyrics_explaination_and_lyrics(song,True)
+                get_lyrics_explaination_and_lyrics(song, True)
 
                 sleep(10)
         except Exception as error:

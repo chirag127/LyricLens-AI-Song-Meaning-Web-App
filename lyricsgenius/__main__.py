@@ -3,8 +3,8 @@
 #    python3 -m lyricsgenius song "Begin Again" "Andy Shauf" --save
 #    python3 -m lyricsgenius artist "The Beatles" --max-songs 5 --save
 
-import os
 import argparse
+import os
 
 from . import Genius
 from .utils import safe_unicode
@@ -17,16 +17,20 @@ def main(args=None):
         "search_type",
         type=str.lower,
         choices=["song", "artist", "album"],
-        help="Specify whether search is for 'song', 'artist' or 'album'."
+        help="Specify whether search is for 'song', 'artist' or 'album'.",
     )
-    parser.add_argument("terms", type=str, nargs="+",
-                        help="Provide terms for search")
-    parser.add_argument("--save", action="store_true",
-                        help="If specified, saves songs to JSON file")
-    parser.add_argument("--max-songs", type=int,
-                        help="Specify number of songs when searching for artist")
-    parser.add_argument("-q", "--quiet", action="store_true",
-                        help="Turn off the API verbosity")
+    parser.add_argument("terms", type=str, nargs="+", help="Provide terms for search")
+    parser.add_argument(
+        "--save", action="store_true", help="If specified, saves songs to JSON file"
+    )
+    parser.add_argument(
+        "--max-songs",
+        type=int,
+        help="Specify number of songs when searching for artist",
+    )
+    parser.add_argument(
+        "-q", "--quiet", action="store_true", help="Turn off the API verbosity"
+    )
     args = parser.parse_args()
 
     # Create an instance of the Genius class
@@ -49,9 +53,9 @@ def main(args=None):
                 print("Saving lyrics to '{s}'...".format(s=safe_unicode(song.title)))
             song.save_lyrics()
     elif args.search_type == "artist":
-        artist = api.search_artist(args.terms[0],
-                                   max_songs=args.max_songs,
-                                   sort='popularity')
+        artist = api.search_artist(
+            args.terms[0], max_songs=args.max_songs, sort="popularity"
+        )
         if args.save:
             if not args.quiet:
                 print("Saving '{a}'' lyrics...".format(a=safe_unicode(artist.name)))

@@ -1,9 +1,10 @@
 import random
 import webbrowser
 from time import sleep
-from makerep import get_lyrics_explaination_and_lyrics
+
 import pyautogui
 import pyperclip
+from makerep import get_lyrics_explaination_and_lyrics
 
 
 def return_article(lyrics, explaination, author="Chirag Singhal"):

@@ -2,9 +2,7 @@
 This module contains the main function that is called when the program is run.
 """
 
-
 import os
-
 import subprocess
 import sys
 

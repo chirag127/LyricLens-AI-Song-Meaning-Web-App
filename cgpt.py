@@ -1,9 +1,8 @@
-from revChatGPT.Official import Chatbot
 # from pychatgpt import Chat
-import os
-import openai
 import time
 
+import openai
+from revChatGPT.Official import Chatbot
 
 config = {"email": "whyiswhen@gmail.com", "password": "x$Mt5T@5yRg8nW2"}
 # config = {
@@ -14,8 +13,7 @@ config = {"email": "whyiswhen@gmail.com", "password": "x$Mt5T@5yRg8nW2"}
 
 
 def get_chat_response(prompt="Hello world"):
-    chatbot = Chatbot(config=config,conversation_id=None)
-
+    chatbot = Chatbot(config=config, conversation_id=None)
 
     answer = chatbot.get_chat_response("Hello world", output="text")
 
@@ -26,7 +24,6 @@ def get_chat_response(prompt="Hello world"):
     print(answer)
 
     answer = answer["message"]
-
 
     return answer
 

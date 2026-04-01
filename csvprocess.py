@@ -1,6 +1,6 @@
-
 import os
 from time import sleep
+
 from makerg import line_21
 from prompt import return_prompt
 
@@ -14,7 +14,9 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         actual_song_name = title
 
-        song_name, file_name, artist_name, answer_full_path = line_21(actual_artist_name, actual_song_name)
+        song_name, file_name, artist_name, answer_full_path = line_21(
+            actual_artist_name, actual_song_name
+        )
 
         if os.path.exists(answer_full_path):
             print(f"Response already exists for : {song_name}")
@@ -31,10 +33,7 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
         if not os.path.exists(f"lyrics/{artist_name}"):
             os.mkdir(f"lyrics/{artist_name}")
 
-
-
         lyrics = lyric
-
 
         # remove the first line of the lyrics
 
@@ -42,17 +41,13 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
 
         # lyrics = "\n".join(lyrics)
 
-
         if not os.path.exists(lyrics_full_path):
             with open(lyrics_full_path, "w", encoding="utf-8") as file:
                 file.write(lyrics)
 
-
         actual_song_name = title
 
-
-        prompt = return_prompt(lyrics, actual_artist_name, actual_song_name,song_name)
-
+        prompt = return_prompt(lyrics, actual_artist_name, actual_song_name, song_name)
 
         print(f"getting response for : {song_name}")
 
@@ -77,7 +72,6 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
             print("You've made too many requests!")
             raise
 
-
         with open(answer_full_path, "w", encoding="utf-8") as f:
             f.write(response)
 
@@ -90,11 +84,12 @@ def get_lyrics_explaination_and_lyrics_csv(artist, title, album, date, year, lyr
         print(error)
         print(f"Response not found for : {song_name}")
 
+
 def main():
     import csv
     import os
-    songs = []
 
+    songs = []
 
     def process_song(song):
         artist = song[0]
@@ -157,7 +152,6 @@ def main():
 
             else:
                 continue
-
 
     for song in songs:
         process_song(song)
